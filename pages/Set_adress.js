@@ -1,16 +1,13 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Alert,
-  Dimensions,
-} from "react-native";
+import { SafeAreaView, StyleSheet, Alert, Dimensions } from "react-native";
 import { Input } from "../auxiliar/Input.js";
 import { Button } from "../auxiliar/Button.js";
 import { connect } from "react-redux";
 import { setRegion } from "../reducers/coord_red.js";
 import Geocoder from "react-native-geocoding";
 import appjson from "../app.json";
+import Icon_and_buttons_base from "./icon_and_buttons_base.js";
+import { GoTo } from "../auxiliar/GoTo.js";
 // console.log(JSON.stringify(appjson, null, 5))
 Geocoder.init(appjson.expo.android.config.googleMaps.apiKey);
 
@@ -39,21 +36,24 @@ class Set_adress extends React.Component {
         this.set_region(json.results[0]);
         navigation.navigate("Map");
       })
-      .catch((error) =>
-        Alert.alert("Erro", "Certifique-se que é um local valido")
-      );
+      .catch((error) => {
+        console.log(error);
+        Alert.alert("Erro", "Certifique-se que é um local valido");
+      });
   };
 
   render() {
+    const { navigation } = this.props;
     return (
-      <SafeAreaView style={styles.container}>
+      <Icon_and_buttons_base text="Digite o endereço e depois confirme">
         <Input
-          placeholder="Endereço"
+          placeholder="Digitar Endereço"
           state="adress"
           // init="avenida lucio costa 4200"
           THIS={this}
         />
         <Button
+          text="Confirmar Endereço"
           onPress={async () => {
             const { adress } = this.state;
             adress
@@ -61,23 +61,38 @@ class Set_adress extends React.Component {
               : Alert.alert("espaço vazio");
           }}
           isAsync
+          style={styles}
         />
-      </SafeAreaView>
+        <GoTo
+          {...{ navigation }}
+          nav_path={"Init"}
+          text="Voltar"
+          style={styles}
+        />
+      </Icon_and_buttons_base>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "space-evenly",
-    alignItems: "center"
-  },
   input: {
     height: 40,
     margin: 12,
     borderWidth: 1,
     padding: 10,
+  },
+  container: {
+    flex: 1,
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
+  button: {
+    height: 50,
+    justifyContent: "center",
+  },
+  button_txt: {
+    fontSize: 20,
+    // color: 'red'
   },
 });
 

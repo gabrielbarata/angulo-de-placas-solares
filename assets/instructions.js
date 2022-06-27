@@ -1,22 +1,19 @@
  
 const text =
 `
-Este é um aplicativo que te da o melhor ângulo para a instalação de uma placa solar.
+O InclinaSol calcula o melhor ângulo de inclinação das placas solares, facilitando a instalação em um telhado ou suporte.
 
-Este ângulo depende das coordenadas do local onde será instalado a placa.
+Este ângulo é calculado a partir das coordenadas do local onde será instalada a placa.
 
-Clicando em iniciar, você pode observar 3 botões.
+Clicando em inicio, aparecerão três opções.
 
-Em Coordenadas, você pode inserir diretamente as coordenadas do local desejado.
+Ao clicar na opção “COORDENADAS”, insira diretamente as coordenadas (latitude e longitude em graus) do local desejado, em seguida vá no botão Confirmar Valores, quando aparecer o mapa vá novamente no botão “Calcule” e aparecerá o ângulo ideal para sua instalação, se quiser copiar o melhor ângulo, clique em “COPIAR ÂNGULO”.
 
-Em Endereço, você pode inserir o endereço do local desejado, e você terá as coordenadas do mesmo.
+Na opção “ENDEREÇO”, insira o endereço do local desejado e clique no botão “Confirmar Endereço” para aparecer o mapa. Toque novamente no botão “Calcule” para obter o cálculo do ângulo e se quiser copiar o melhor ângulo clique em “COPIAR ÂNGULO”. 
 
-Em Posição Atual, você terá as coordenadas de sua posição atual.
+Clicando na opção “Posição Atual”, será mostrado o mapa com a localização atual, sendo possível arrastá-lo para atualizar manualmente a posição. Para obter a angulação ideal, basta clicar no botão “Calcule” e se quiser copiar o melhor ângulo clique em “COPIAR ÂNGULO”.
 
-Com as coordenadas em mãos, você verá um mapa apontando para as mesmas. Você pode arrastar o mapa que \
-isso atualizará suas coordenadas.
-
-Clicando em Aperte, você terá o ângulo desejado.
+Para retornar às telas anteriores basta clicar em voltar a qualquer momento.
 `
 
 export default text

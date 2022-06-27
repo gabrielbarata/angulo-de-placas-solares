@@ -56,8 +56,10 @@ class Button extends React.Component {
     Object.keys(stylesDefault).map((key, index) => {
       newStyle[key] = { ...stylesDefault[key], ...style[key] };
     });
+    const {width,height}=newStyle.button
+    const act_style={width,height}
     return this.state.loading ? (
-      <ActivityIndicator size="large" color="#0000ff" />
+      <ActivityIndicator size="large" color="#0000ff" style={act_style}/>
     ) : (
       <TouchableOpacity
         {...this.props}
@@ -72,15 +74,17 @@ class Button extends React.Component {
 
 const stylesDefault = StyleSheet.create({
   button: {
-    width: 300,
-    borderColor: "#420601",
-    borderWidth: 1,
+    // width: 300,
+    width: "100%",
+    backgroundColor: "#3003fc",
+    // borderColor: "#420601",
+    // borderWidth: 1,
     alignItems: "center",
-    borderRadius: 5,
+    borderRadius: 8,
   },
   button_txt: {
-    fontWeight: "bold",
-    color: "#E6BDAC",
+    // fontWeight: "bold",
+    color: "#fcfcfc",
     fontSize: 30,
   },
 });

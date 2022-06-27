@@ -9,68 +9,121 @@ import Set_adress from "./Set_adress.js";
 import { LinearGradient } from "expo-linear-gradient";
 import base from "./base.js";
 import instructions from "./instructions.js";
+import mais_info from "./mais_info";
 import { SafeAreaView } from "react-native";
 
 const { Navigator, Screen } = createStackNavigator();
 
 const Wrap = (Insides) => (props) =>
-// (
-//   <SafeAreaView
-//     style={{ flex: 1 }}
-//     colors={["#942911", "#6883BA"]}
-//     start={{ x: 0, y: 0 }}
-//     end={{ x: 0, y: 1 }}
-//   >
-
-//     <Insides {...props} />
-//   </SafeAreaView>
-// );
   (
+    // (
+    //   <SafeAreaView
+    //     style={{ flex: 1 }}
+    //     colors={["#942911", "#6883BA"]}
+    //     start={{ x: 0, y: 0 }}
+    //     end={{ x: 0, y: 1 }}
+    //   >
+
+    //     <Insides {...props} />
+    //   </SafeAreaView>
+    // );
     <LinearGradient
       style={{ flex: 1 }}
-      colors={["#942911", "#6883BA"]}
+      colors={["#fcfcfc", "#fcfcfc"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
     >
-
       <Insides {...props} />
     </LinearGradient>
   );
 
 export default Router = () => {
-  const opt = (headerTitle) => ({
+  // const opt = (headerTitle, backColor) => ({
+  //   options: {
+  //     headerTitle,
+  //     headerStyle: {
+  //       // backgroundColor: "#AE5C74",
+  //       // backgroundColor: "#6883BA",
+  //       backgroundColor: backColor ? backColor : "#942911",
+  //       borderBottomColor: backColor ? backColor : "#942911",
+  //       borderBottomWidth: 2,
+  //     },
+  //     headerTintColor: "#000",
+  //     headerTitleStyle: {
+  //       color: "#000",
+  //       fontWeight: "bold",
+  //     },
+  //   },
+  // });
+
+  const opt ={
     options: {
-      headerTitle,
+      headerTitle: 'InclinaSol',
+      headerTitleAlign: 'center',
+      // headerTransparent:true,
+      headerLeft: null,
+
       headerStyle: {
-        backgroundColor: "#AE5C74",
+        height:100,
+        
+        backgroundColor: "#fcfcfc",
+        // backgroundColor: "#6883BA",
+        
+        // backgroundColor: backColor ? backColor : "#942911",
+        // borderBottomColor: backColor ? backColor : "#942911",
+        // borderBottomWidth: 2,
+      },
+      // headerTitleContainerStyle: { marginTop: 0 , },
+      headerTitleStyle: {
+        color: "#ff0d19",
+        // flex:1,
+
+        // fontWeight: "bold",
+        fontSize:50
+        // align
       },
     },
-  });
+  }
   return (
     <NavigationContainer>
       <Navigator>
         <Screen
           name="Base"
           component={Wrap(base)}
-          options={{ headerShown: false }}
+          {...opt}
+          // options={{ }}
         />
-        <Screen name="Init" component={Wrap(Init)} {...opt("Início")} />
+        <Screen name="Init" component={Wrap(Init)} 
+        {...opt}
+         />
         <Screen
           name="Instructions"
           component={Wrap(instructions)}
-          {...opt("Instruções")}
+          {...opt}
+          // {...opt("Instruções")}
+        />
+        <Screen
+          name="mais_info"
+          component={Wrap(mais_info)}
+          {...opt}
+          // {...opt("mais_info")}
         />
         <Screen
           name="Set_coord"
           component={Wrap(Set_coord)}
-          {...opt("Coordenadas")}
+          {...opt}
+          // {...opt("Coordenadas")}
         />
         <Screen
           name="Set_adress"
           component={Wrap(Set_adress)}
-          {...opt("Endereço")}
+          {...opt}
+          // {...opt("Endereço")}
         />
-        <Screen name="Map" component={Mapa} {...opt("Mapa")} />
+        <Screen name="Map" component={Mapa} 
+        {...opt}
+        // {...opt("Mapa", "#6883BA")}
+         />
       </Navigator>
     </NavigationContainer>
     // <>{Wrap(Init)()}</>
